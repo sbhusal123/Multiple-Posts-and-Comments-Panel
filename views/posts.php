@@ -37,18 +37,25 @@
 	while($row2 = $result2 -> fetch_assoc())
 	{
 		if($row2["link_id"]==$row1["id"]){
-		echo '<div style="background:#5CE0A4;border-radius:5px;margin:2px;border:2px solid indigo;font-size:20px;padding:1.5%;margin-bottom:0px">
+		echo '
+		<div style="background:#5CE0A4;border-radius:5px;margin:2px;border:2px solid indigo;font-size:20px;padding:1.5%;margin-bottom:0px">
+
 			<p style="margin-bottom:-5px" id=" '.$row2["id"].' " >'.$row2["comment"].'</p> 
 			<br>
-			<p style="margin-bottom:-25px;margin-top:-5px"> <!-- inline wrapper -->
+
+			<div style="margin-bottom:-25px;margin-top:-5px"> <!-- inline wrapper -->
+
 			<img src="./includes/images/user.png" style="width:4%;">
 			<span style="color:orange;font-size:17px"><i>Anonymous</i></span>
 			</img>
 			<button style="float:right" onclick="comment_delete(this);" class="btn btn-danger btn-sm glyphicon glyphicon-trash">
 			</button>
 			<button style="margin-right:3px;float:right" onclick="comment_edit(this);" class="btn btn-success btn-sm glyphicon glyphicon-edit"></button>
-			</p>	<!-- inline wrapper -->
+
+			</div>	<!-- inline wrapper -->
+
 			<br>
+			
 		</div>';
 		}
 	}

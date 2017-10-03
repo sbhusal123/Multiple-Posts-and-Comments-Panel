@@ -48,7 +48,7 @@ function comment(dom){
 
 
 function comment_edit(dom){
-        var id= $(dom).parent('div').find('p').attr('id');
+        var id= $(dom).parent('div').parent('div').find('p').attr('id');
 
         $.ajax({
         url: './views/modal.php',
@@ -81,7 +81,7 @@ function submitEdited(){
 
 function comment_delete(dom){
         check=4;
-        var id= $(dom).parent('div').find('p').attr('id');
+        var id= $(dom).parent('div').parent('div').find('p').attr('id');
         var r=confirm("Are you sure to delete?");
         if(r){
 
