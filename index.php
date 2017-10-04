@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Document</title>
+	<title>Comments</title>
 	<?php include_once("includes/template.php"); ?>
 </head>
 <body style="background: lightpink">

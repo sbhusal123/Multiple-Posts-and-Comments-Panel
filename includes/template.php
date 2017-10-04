@@ -3,4 +3,4 @@
   <link rel="stylesheet" href="includes/bootstrap/css/bootstrap.css">
   <script src="includes/jquery.js"></script>
   <script src="includes/bootstrap/js/bootstrap.js"></script>
-   <script src="includes/script.js"></script>
+  <script src="includes/script.js"></script>

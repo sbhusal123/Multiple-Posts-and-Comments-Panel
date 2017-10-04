@@ -1,3 +1,10 @@
+<style>
+#like:hover{
+	color:red;
+	cursor: pointer;	
+}	
+
+</style>
 <?php  
 
 	include_once dirname(__FILE__).'/../php/db_connect.php';
@@ -17,7 +24,7 @@
 
 		<div class="panel-heading" style="padding-top:3px;padding-bottom:0px">
 		<p> <span style="margin-right:5px"><img src="./includes/images/user.png" width="5%" height="5%"></span> '.$row1["name"].' </p>
-		</div>
+		</div> 
 
 		<div class="panel-body">
 			<p style="margin-left:5px;border-radius:5px;border:2px solid blue;font-size:18px;color:indigo;background:lightblue;padding:2px"> '.$row1["comment"] .' </p>
@@ -33,12 +40,28 @@
 	$sql2= "SELECT * FROM comments ORDER BY id desc";	
 	$result2= $conn2->query($sql2);
 
+		$totalCom=0;
+
+	while($row2 = $result2 -> fetch_assoc())
+	{
+		if($row2["link_id"]==$row1["id"]){
+			$totalCom++;
+		}
+	}
+
+
+	$result2= $conn2->query($sql2);
+	echo '<p style="margin-top:3px;margin-left:20px;">
+	<span class="glyphicon glyphicon-thumbs-up" id="like" title="Like"> 5</span>
+	<span class="glyphicon glyphicon-comment" style="margin-left:20px;cursor:pointer" title="Comments"> '.$totalCom.'
+	</span>
+	</p>';
 
 	while($row2 = $result2 -> fetch_assoc())
 	{
 		if($row2["link_id"]==$row1["id"]){
 		echo '
-		<div style="background:#5CE0A4;border-radius:5px;margin:2px;border:2px solid indigo;font-size:20px;padding:1.5%;margin-bottom:0px">
+		<div class="comment_display"  style="background:#5CE0A4;border-radius:5px;margin:2px;border:2px solid indigo;font-size:20px;padding:1.5%;margin-bottom:0px">
 
 			<p style="margin-bottom:-5px" id=" '.$row2["id"].' " >'.$row2["comment"].'</p> 
 			<br>
@@ -51,7 +74,6 @@
 			<button style="float:right" onclick="comment_delete(this);" class="btn btn-danger btn-sm glyphicon glyphicon-trash">
 			</button>
 			<button style="margin-right:3px;float:right" onclick="comment_edit(this);" class="btn btn-success btn-sm glyphicon glyphicon-edit"></button>
-
 			</div>	<!-- inline wrapper -->
 
 			<br>
@@ -67,7 +89,8 @@
 	<div class="panel-footer" style="background-color:lightblue">
 		<p style="float:right"><b>Posted At : '.$row1["time"].'</b></p><br>
 	</div>
-	</div> 
+	</div>
+
     <!-- panel  --> ';
 	}
 

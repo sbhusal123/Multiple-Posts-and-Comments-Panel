@@ -1,5 +1,3 @@
-var reload_status=true;
-
 function test(dom){
         var com=$(dom).val();
         com=$.trim(com);
