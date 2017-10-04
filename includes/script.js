@@ -1,3 +1,5 @@
+reload_status=true;
+
 function test(dom){
         var com=$(dom).val();
         com=$.trim(com);
@@ -20,7 +22,7 @@ function test(dom){
 
         };
 
-        xhttp.open("GET", "./views/posts.php", true);
+        xhttp.open("GET", "posts.php", true);
         xhttp.send();
         }
 
@@ -32,7 +34,7 @@ function comment(dom){
 
         check=2;
         $.ajax({
-        url: 'php/db_operations.php',
+        url: '../php/db_operations.php',
         data: {check:check,comment:comment,link_id:link_id},
         type: 'POST',
         success: function (data) {
@@ -49,7 +51,7 @@ function comment_edit(dom){
         var id= $(dom).parent('div').parent('div').find('p').attr('id');
 
         $.ajax({
-        url: './views/modal.php',
+        url: '../views/modal.php',
         data: {id:id},
         type: 'POST',
         success: function (data) {
@@ -66,7 +68,7 @@ function submitEdited(){
         var id=$("#edit_comment").parent('div').attr('id');
         var check=3;
         $.ajax({
-        url: './php/db_operations.php',
+        url: '../php/db_operations.php',
         data: {check:check,id:id,edit:edit},
         type: 'POST',
         success: function (data) {
@@ -84,7 +86,7 @@ function comment_delete(dom){
         if(r){
 
         $.ajax({
-        url: './php/db_operations.php',
+        url: '../php/db_operations.php',
         data: {check:check,id:id},
         type: 'POST',
         success: function (data) {
@@ -106,7 +108,7 @@ $(document).ready(function(){
 	var name=$("#post_name").val();
 
         $.ajax({
-        url: 'php/db_operations.php',
+        url: '../php/db_operations.php',
         data: {check:check,post:post,name:name},
         type: 'POST',
         success: function (data) {

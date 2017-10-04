@@ -23,7 +23,7 @@
 	 echo '<div class="panel panel-primary" id="'.$row1["id"].' ">
 
 		<div class="panel-heading" style="padding-top:3px;padding-bottom:0px">
-		<p> <span style="margin-right:5px"><img src="./includes/images/user.png" width="5%" height="5%"></span> '.$row1["name"].' </p>
+		<p> <span style="margin-right:5px"><img src="../includes/images/user.png" width="5%" height="5%"></span> '.$row1["name"].' </p>
 		</div> 
 
 		<div class="panel-body">
@@ -68,7 +68,7 @@
 
 			<div style="margin-bottom:-25px;margin-top:-5px"> <!-- inline wrapper -->
 
-			<img src="./includes/images/user.png" style="width:4%;">
+			<img src="../includes/images/user.png" style="width:4%;">
 			<span style="color:orange;font-size:17px"><i>Anonymous</i></span>
 			</img>
 			<button style="float:right" onclick="comment_delete(this);" class="btn btn-danger btn-sm glyphicon glyphicon-trash">
