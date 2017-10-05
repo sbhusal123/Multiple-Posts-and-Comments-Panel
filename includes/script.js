@@ -1,5 +1,19 @@
 reload_status=true;
 
+function view_more(dom){
+        var id=$(dom).parent('div').parent('div').attr('id');
+
+        $.ajax({
+        url: '../php/set_sessionViremore.php',
+        data: {id:id},
+        type: 'POST',
+        success: function (data) {
+        }
+        });
+
+
+}
+
 function test(dom){
         var com=$(dom).val();
         com=$.trim(com);
@@ -11,22 +25,6 @@ function test(dom){
         }
 
 }
-
- function reload() {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-
-        if (this.readyState == 4 && this.status == 200 && reload_status) {
-                $(".col-xs-8").html(this.responseText);
-        }
-
-        };
-
-        xhttp.open("GET", "posts.php", true);
-        xhttp.send();
-        }
-
-        setInterval(function(){ reload(); }, 1000);
 
 function comment(dom){
         var link_id = $(dom).parent('div').parent('div').attr('id');

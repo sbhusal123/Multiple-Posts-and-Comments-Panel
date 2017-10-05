@@ -1,24 +1,21 @@
-<style>
-#like:hover{
-	color:red;
-	cursor: pointer;	
-}	
+<?php 
+	session_start();
+	$id=$_SESSION["com_id"];
+ ?>
 
-</style>
-<?php  
+	<?php  
 
-	include_once dirname(__FILE__).'/../php/db_connect.php';
+	include_once '../../php/db_connect.php';
 
 	$conn1=new mysqli(server,user,password,db);
 
 
-	$sql1= "SELECT * FROM posts ORDER BY id desc";	
+	$sql1= "SELECT * FROM posts WHERE id= {$id} ";	
 
 	$result1= $conn1->query($sql1);
 
 
-	while($row1 = $result1 -> fetch_assoc())
-	{
+	$row1 = $result1 -> fetch_assoc();
 
 	 echo '<div class="panel panel-primary" id="'.$row1["id"].' ">
 
@@ -27,7 +24,7 @@
 		</div> 
 
 		<div class="panel-body">
-			<p style="margin-left:5px;border-radius:5px;border:2px solid blue;font-size:18px;color:indigo;background:lightblue;padding:2px"> '.$row1["comment"] .' </p>
+			<p style="margin-left:5px;border-radius:5px;border:2px solid blue;color:indigo;background:lightblue;padding:2px"> '.$row1["comment"] .' </p>
 			<p>Comments:</p>
 			<textarea style="width:100%;height:100px;resize: none" id="comment_text" onfocus="reload_status=false" onblur="test(this)"></textarea>
 			<br>
@@ -44,11 +41,11 @@
 
 	while($row2 = $result2 -> fetch_assoc())
 	{
-
 		if($row2["link_id"]==$row1["id"]){
 			$totalCom++;
 		}
 	}
+
 
 	$result2= $conn2->query($sql2);
 	echo '<p style="margin-top:3px;margin-left:20px;">
@@ -57,11 +54,9 @@
 	</span>
 	</p>';
 
-	$display_count=0;
 	while($row2 = $result2 -> fetch_assoc())
 	{
-		if($row2["link_id"]==$row1["id"]  && $display_count<2){
-			$display_count++;
+		if($row2["link_id"]==$row1["id"]){
 		echo '
 		<div class="comment_display"  style="background:#5CE0A4;border-radius:5px;margin:2px;border:2px solid indigo;font-size:20px;padding:1.5%;margin-bottom:0px">
 
@@ -89,13 +84,11 @@
 
 	echo '
 	<div class="panel-footer" style="background-color:lightblue">
-	    <a href="viewmore.php" onclick="view_more(this)">View More Comments</a>
 		<p style="float:right"><b>Posted At : '.$row1["time"].'</b></p><br>
 	</div>
 	</div>
 
     <!-- panel  --> ';
-	}
 
 	$conn1->close();
     ?>

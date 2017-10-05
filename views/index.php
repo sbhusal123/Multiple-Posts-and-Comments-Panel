@@ -4,6 +4,25 @@
 <head>
 	<title>Comments</title>
 	<?php include_once("../includes/template.php"); ?>
+
+	<script>
+		
+		function reload() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+
+        if (this.readyState == 4 && this.status == 200 && reload_status) {
+                $(".col-xs-8").html(this.responseText);
+        }
+
+        };
+
+        xhttp.open("GET", "posts.php", true);
+        xhttp.send();
+        }
+
+        setInterval(function(){ reload(); }, 1000);
+	</script>
 </head>
 <body style="background: lightpink">
 	<div class="container">
